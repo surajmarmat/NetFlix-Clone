@@ -1,38 +1,51 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;500;700;800&display=swap');
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css);
+
+body{
+    background-color: #032541;
+    background-color: #05121f;
+    background-color: #02111d;
+    background-color: #111;
+    overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*{
+    margin: -2px 0px;
+    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Baloo Bhaina 2', cursive; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h3{
+    position: absolute;
+    top: 0;
+    color: rgb(76, 86, 88);
+    color: rgb(216, 9, 9);
+    color: rgb(238, 9, 9);
+    z-index: 100;
+    font-size: 2.6rem;
+    /* background-color: rgba(0, 0, 0, 0); 
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); */
+    width: 94.8%;
+    width: 100%;
+    overflow-x: hidden;
+    padding: 0.8rem 2rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@media screen and (max-width: 600px) {
+    h3{
+        padding: 0.8rem 0.6rem;
+    }
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container{
+    font-size: 1.4em;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr ;
+    /* border: 1px solid rgba(126, 118, 118, 0.383); */
+    height: fit-content;
+    border-radius: 8px;
+    height: 96vh;
 }

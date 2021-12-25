@@ -1,0 +1,320 @@
+.mainBody{
+    overflow-x: hidden;
+    overflow-y: visible;
+    padding-bottom: 3rem;
+    margin-left: -0.6rem;
+}
+
+.blurryHeader{
+    background-color: rgba(0, 0, 0, 0.233);
+    /* backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); */
+}
+
+.secondBox{
+    width: 96%;
+    margin: auto;
+}
+
+@media screen and (max-width: 500px) {
+    .secondBox{
+        width: 90%;
+    }
+}
+
+.secondBox img{
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.secondBox h5{
+    margin-left: -0.3rem;
+}
+
+.slider{
+    height: fit-content;
+    width: 1530px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 0px 0px;
+    /* border-radius: 6px; */
+}
+
+.seriesDet{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 70vh;
+    /* border-radius: 8px; */
+    /* background-image: url(./img2.jpg); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items: flex-end;
+    width: 100%;
+    padding-bottom: 2.2rem;
+    margin: auto;
+    /* background-image: url(./img2.jpg); */
+}
+
+@media screen and (max-width: 600px) {
+    .seriesDet{
+        background-image: url(./img2.jpg);
+        background-size: fill;
+    }
+}
+
+.empty{
+    border: 0px solid green;
+    border-bottom: 3px solid #111;
+    color: rgba(17, 17, 17, 0.726);
+    margin-top: -4.1rem;
+    height: 4rem;
+}
+
+.flexDown{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 50%;
+    margin: 1.8rem 1rem;
+    color: rgb(230, 230, 230);
+    background-color: rgba(128, 128, 128, 0.007);
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.seriesDet h2{
+    margin-bottom: 8px;
+}
+
+.watchNow button{
+    border: none;
+    background-color: rgba(78, 77, 77, 0.657);
+    cursor: pointer;
+    color: rgb(240, 240, 240);
+    font-weight: 600;
+    padding: 20px 8px;
+    font-size: 1.1rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* border-radius: 8px; */
+    margin: 3rem 3rem;
+}
+
+.watchNow button:hover{
+    background-color: rgba(199, 14, 14, 0.835);
+}
+
+.minorDetails{
+    font-weight: 500;
+    display: flex;
+    width: 100%;
+    font-size: 0.8em;
+    justify-content: left;
+    height: 5.4rem;
+    overflow-y: hidden;
+}
+
+.minorDetails p{
+    padding-right: 0.8rem;
+}
+
+.slider2{
+    /* border: 1px solid green; */
+    height: fit-content;
+    width: 90%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    border-radius: 8px;
+    margin: -6rem 0rem 0rem 0rem ;
+    padding: 5px;
+    display: flex;
+}
+
+/* .scroll::-webkit-scrollbar-thumb{
+    color: red;
+} */
+
+.slider2::-webkit-scrollbar{
+    background-color: rgba(255, 0, 0, 0.411);
+    color: white;
+    border-radius: 5px;
+}
+
+
+.slider3::-webkit-scrollbar{
+    background-color: rgba(255, 0, 0, 0.411);
+    background-color: rgba(255, 0, 0, 0.13);
+    /* color: white; */
+    border-radius: 2px;
+}
+
+.slider3::-webkit-scrollbar-thumb{
+    background-color: rgba(255, 0, 0, 0.527);
+    border-radius: 2px;
+}
+.slider4::-webkit-scrollbar-thumb{
+    background-color: rgba(255, 0, 0, 0.527);
+    border-radius: 2px;
+}
+.slider5::-webkit-scrollbar-thumb{
+    background-color: rgba(255, 0, 0, 0.452);
+    background-color: rgba(255, 0, 0, 0.527);
+    background-color: rgba(255, 0, 0, 0.527);
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.slider4::-webkit-scrollbar{
+    background-color: rgba(255, 0, 0, 0.411);
+    background-color: rgba(255, 0, 0, 0.13);
+    color: white;
+    border-radius: 5px;
+}
+.slider5::-webkit-scrollbar{
+    background-color: rgba(255, 0, 0, 0.411);
+    background-color: rgba(255, 0, 0, 0.13);
+    color: white;
+    border-radius: 5px;
+}
+
+/* .slider2 img{
+    width: 120px;
+    height: 180px;
+    margin: 2px 6px;
+    transition: transform 1s;
+}
+
+.slider2 img:hover{
+    transform: scale(1.09);
+} */
+.slider3 img{
+    width: 120px;
+    height: 180px;
+    /* width: 260px;
+    height: 150px; */
+    margin: 2px 6px;
+    transition: transform 1s;
+}
+
+.slider3 img:hover{
+    transform: scale(1.09);
+}
+.slider4 img{
+    width: 120px;
+    height: 180px;
+    margin: 2px 6px;
+    transition: transform 1s;
+}
+
+.slider4 img:hover{
+    transform: scale(1.09);
+}
+.slider4 img{
+    width: 120px;
+    height: 180px;
+    margin: 2px 6px;
+    transition: transform 1s;
+}
+
+.slider4 img:hover{
+    transform: scale(1.09);
+}
+
+.slider5 img{
+    width: 120px;
+    height: 180px;
+    margin: 2px 6px;
+    transition: transform 1s;
+}
+
+.slider5 img:hover{
+    transform: scale(1.09);
+}
+
+.slide{
+    display: flex;
+    justify-content: start;
+    text-align: left;
+    flex-direction: column;
+    margin-top: -6rem;
+}
+
+#h5ch{
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+}
+
+h5{
+    color: rgba(160, 160, 160, 0.829);
+    color: rgba(214, 214, 214, 0.829);
+    color: rgba(214, 214, 214, 0.924);
+    padding: 5px;
+    text-align: left;
+    border-radius: 2px;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    margin-bottom: -2rem;
+    font-size: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+    text-transform: capitalize;
+    font-family: 'Montserrat', sans-serif;
+    width: 50%;
+    background-color: linear-gradient(to right, rgba(228, 43, 43, 0.26), rgba(228, 43, 43, 0));
+}
+
+.slider3{
+    display: flex;
+    margin-top: 0rem;
+    height: fit-content;
+    padding: 15px 0;
+    width: 99%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.slider4{
+    display: flex;
+    height: fit-content;
+    width: 99%;
+    overflow-x: scroll;
+    padding: 15px 0;
+    overflow-y: hidden;
+    margin-top: 2rem;
+}
+.slider5{
+    display: flex;
+    margin-top: 2rem;
+    padding: 15px 0;
+    height: fit-content;
+    width: 99%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.youTuber{
+    margin: 1rem 0rem 1rem 10%;
+    /* display: none; */
+    width: 80%;
+    padding: 10px;
+    border: 0px solid yellow;
+}
+
+@media screen and (max-width: 500px) {
+    .youTuber{
+        margin: 1rem 0rem 1rem 6%;
+    }
+}
+
+.youTuber button{
+    margin: 6px 4px;
+    border-radius: 0px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: 700;
+    color: rgb(207, 207, 207);
+    border: none;
+    background-color: rgba(230, 20, 20, 0.87);
+    float: right;
+}
