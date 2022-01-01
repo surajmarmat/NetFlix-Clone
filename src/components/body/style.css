@@ -6,9 +6,17 @@
 }
 
 .blurryHeader{
-    background-color: rgba(0, 0, 0, 0.233);
-    /* backdrop-filter: blur(5px);
+    /* background: rgba(0, 0, 0, 0.02); */
+    transition: background 0.5s;
+}
+
+@media screen and (max-width: 600px){
+    .blurryHeader{
+        background-color: rgba(0, 0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.233);
+        /* backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px); */
+    }
 }
 
 .secondBox{
@@ -46,21 +54,20 @@
     flex-direction: row;
     justify-content: space-between;
     height: 70vh;
-    /* border-radius: 8px; */
-    /* background-image: url(./img2.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
     align-items: flex-end;
     width: 100%;
     padding-bottom: 2.2rem;
     margin: auto;
-    /* background-image: url(./img2.jpg); */
 }
 
 @media screen and (max-width: 600px) {
     .seriesDet{
-        background-image: url(./img2.jpg);
-        background-size: fill;
+        background-size: cover;
+        background-position-x: center;
+        height: 48vh;
+        padding-bottom: 0.5rem;
     }
 }
 
@@ -70,6 +77,13 @@
     color: rgba(17, 17, 17, 0.726);
     margin-top: -4.1rem;
     height: 4rem;
+}
+
+@media screen and (max-width:600px) {
+    .empty{
+        height: 2.6rem;
+        margin-top: -2.6rem;
+    }
 }
 
 .flexDown{
@@ -84,6 +98,19 @@
     padding: 4px;
 }
 
+@media screen and (max-width: 600px){
+    .flexDown{
+        color: rgb(252, 252, 252);
+    }
+}
+
+/* @media screen and (max-width: 600px){
+    .flexDown h2{
+        font-size: 1.6rem;
+        color: rgb(252, 252, 252);
+    }
+} */
+
 .seriesDet h2{
     margin-bottom: 8px;
 }
@@ -97,8 +124,13 @@
     padding: 20px 8px;
     font-size: 1.1rem;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* border-radius: 8px; */
     margin: 3rem 3rem;
+}
+
+@media screen and (max-width: 600px){
+    .watchNow{
+        font-size: 1rem;
+    }
 }
 
 .watchNow button:hover{
@@ -113,6 +145,13 @@
     justify-content: left;
     height: 5.4rem;
     overflow-y: hidden;
+}
+
+@media screen and (max-width: 600px){
+    .minorDetails{
+        font-size: 0.8rem;
+        height: 4.5rem;
+    }
 }
 
 .minorDetails p{
@@ -246,8 +285,6 @@
 }
 
 h5{
-    color: rgba(160, 160, 160, 0.829);
-    color: rgba(214, 214, 214, 0.829);
     color: rgba(214, 214, 214, 0.924);
     padding: 5px;
     text-align: left;
@@ -255,7 +292,6 @@ h5{
     margin-top: 1rem;
     margin-left: 0.5rem;
     margin-bottom: -2rem;
-    font-size: 1.2rem;
     font-size: 1.3rem;
     font-weight: 600;
     letter-spacing: 1.6px;
@@ -263,6 +299,12 @@ h5{
     font-family: 'Montserrat', sans-serif;
     width: 50%;
     background-color: linear-gradient(to right, rgba(228, 43, 43, 0.26), rgba(228, 43, 43, 0));
+}
+
+@media screen and (max-width: 600px) {
+    h5{
+        font-size: 1rem;
+    }
 }
 
 .slider3{
@@ -294,16 +336,22 @@ h5{
 }
 
 .youTuber{
-    margin: 1rem 0rem 1rem 10%;
-    /* display: none; */
+    z-index: 101;
+    margin: 1rem 0rem 1rem 7.6%;
+    position: absolute;
     width: 80%;
     padding: 10px;
-    border: 0px solid yellow;
+    border: 0px solid gray;
+    background-color: rgba(0, 0, 0, 0.918);
+    top: 4rem;
+    padding: 2rem 3rem;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
     .youTuber{
-        margin: 1rem 0rem 1rem 6%;
+        margin: 1rem 0rem 1rem 10%;
+        top: 0rem;
+        padding: 0rem 0rem;
     }
 }
 

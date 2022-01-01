@@ -16,8 +16,9 @@ const Slider2 = (props) => {
                                 localStorage.setItem("currentMovieUrl", url.slice(i + 1, url.length) )
                             }
                         }
+                    }).then(()=>{
+                        localStorage.setItem("clickCheck", "yes")
                     })
-                    localStorage.setItem("clickCheck", "yes")
                 }} />
             </div>
         </div>

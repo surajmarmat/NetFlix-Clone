@@ -17,7 +17,6 @@ localStorage.setItem("clickCheck", "no");
 
 function getMovies(url, unique) {
     fetch(url).then(res => res.json()).then(data => {
-        console.log(data.results)
         for (let i = 0; i < data.results.length; i++) {
             imgPath = baseImgAdd + data.results[i].poster_path;
             localStorage.setItem("path" + unique + i, imgPath);
@@ -27,7 +26,6 @@ function getMovies(url, unique) {
             if (no == data.results.length - 1 || no > data.results.length - 1) {
                 localStorage.setItem('count', 0)
             }
-            backDropImage = "https://image.tmdb.org/t/p/original" + data.results[0].backdrop_path;
             backDropImage = "https://image.tmdb.org/t/p/original" + data.results[no].backdrop_path;
             localStorage.setItem('backDropPath', backDropImage)
             var titleMovie = data.results[no].title;
@@ -46,14 +44,14 @@ let overview = localStorage.getItem('overview')
 let BGpath = localStorage.getItem('backDropPath');
 
 const opts = {
-    height: "450",
+    height: "490",
     width: "100%",
     playerVars: {
         autoplay: 1,
     },
 }
 
-for (let i = 0; i <= 6; i++) {
+for (let i = 0; i <= 10; i++) {
     for (let j = 0; j < 19; j++) {
         slider2arr.push(<Slider2 janvi={localStorage.getItem("path" + i + j)} nameMovie={localStorage.getItem("movieTitle" + i + j)} />);
     }
@@ -66,28 +64,35 @@ API_URL = Base + "/discover/movie?primary_release_date.gte=2014-09-15&primary_re
 getMovies(API_URL, 1);
 API_URL = Base + "/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc" + Api_key;
 getMovies(API_URL, 2);
-API_URL = Base + "/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc" + Api_key;
+API_URL = Base + "/discover/movie?with_genres=18&primary_release_year=2019" + Api_key;
 getMovies(API_URL, 3);
 API_URL = Base + "/discover/movie?with_genres=35&with_cast=23659&sort_by=revenue.desc" + Api_key;
 getMovies(API_URL, 4);
 API_URL = Base + "/discover/movie?certification_country=US&certification.lte=G&sort_by=revenue.desc" + Api_key;
 getMovies(API_URL, 5);
-API_URL = Base + "/discover/movie/?certification_country=US&certification=R&sort_by=vote_count.desc" + Api_key;
+API_URL = Base + "/discover/movie?primary_release_date.gte=2020-01-01&primary_release_date.lte=2020-12-01" + Api_key;
 getMovies(API_URL, 6);
+API_URL = Base + "/discover/movie?with_genres=18&primary_release_year=2018" + Api_key;
+getMovies(API_URL, 7);
+API_URL = Base + "/discover/movie?with_genres=18&primary_release_year=2017" + Api_key;
+getMovies(API_URL, 8);
+API_URL = Base + "/discover/movie?with_genres=18&primary_release_year=2016" + Api_key;
+getMovies(API_URL, 9);
+API_URL = Base + "/discover/movie?with_genres=18&primary_release_year=2015" + Api_key;
+getMovies(API_URL, 10);
 
 const Body = () => {
 
     let noneDP = "none"
     const [movieTrailerUrl, MTU] = useState(" ");
+    const [bgColor, bgColorChange] = useState(" ");
     const [display1, newDisplay] = useState(noneDP);
 
     function triggerTrailer() {
         movieTrailer(titleMain).then((url) => {
-            console.log(url);
             newDisplay("block");
             for (let i = 0; i < url.length; i++) {
                 if (url[i] == "=") {
-                    console.log(url.slice(i + 1, url.length))
                     MTU(url.slice(i + 1, url.length));
                 }
             }
@@ -109,13 +114,23 @@ setInterval(() => {
     }
 
     return (
-        <div className='mainBody' >
+        <div className='mainBody' onScroll={(event)=>{
+            // console.log(event.scroll);
+            if( event.target.scrollTop > 400 ){
+                console.log("NetFlix Scrolled")
+                console.log(event.target.scrollTop)
+                bgColorChange('#111')
+            }
+            else if(event.target.scrollTop < 400){
+                bgColorChange(" ");
+            }
+        }}>
             <div className="mainBodyContent">
                 <div className="slider">
                     <div className="seriesDet"
                         style={{ backgroundImage: `url(${BGpath})` }}
                     >
-                        <h3 className="blurryHeader" >
+                        <h3 className="blurryHeader" style={{background:bgColor }} >
                             Netflix.
                         </h3>
                         <div className="flexDown">
@@ -162,12 +177,6 @@ setInterval(() => {
                         {slider3arr[3]}
                     </div>
                     <h5 style={{ background: "linear-gradient(to right, rgba(228, 43, 43, 0.1), rgba(228, 43, 43, 0))" }} >
-                        Top R rated Movies
-                    </h5>
-                    <div className="slider5"  >
-                        {slider3arr[4]}
-                    </div>
-                    <h5 style={{ background: "linear-gradient(to right, rgba(228, 43, 43, 0.1), rgba(228, 43, 43, 0))" }} >
                         Comedy Movies
                     </h5>
                     <div className="slider5"  >
@@ -180,10 +189,40 @@ setInterval(() => {
                         {slider3arr[6]}
                     </div>
                     <h5 style={{ background: "linear-gradient(to right, rgba(228, 43, 43, 0.1), rgba(228, 43, 43, 0))" }} >
-                        Top Voted Movies
+                        By release year (2020)
                     </h5>
                     <div className="slider5"  >
                         {slider3arr[7]}
+                    </div>
+                    <h5 style={{ background: "linear-gradient(to right, rgba(228, 43, 43, 0.1), rgba(228, 43, 43, 0))" }} >
+                        By release year (2019)
+                    </h5>
+                    <div className="slider5"  >
+                        {slider3arr[4]}
+                    </div>
+                    <h5 style={{ background: "linear-gradient(to right, rgba(228, 43, 43, 0.1), rgba(228, 43, 43, 0))" }} >
+                        By release year (2018)
+                    </h5>
+                    <div className="slider5"  >
+                        {slider3arr[8]}
+                    </div>
+                    <h5 style={{ background: "linear-gradient(to right, rgba(228, 43, 43, 0.1), rgba(228, 43, 43, 0))" }} >
+                        By release year (2017)
+                    </h5>
+                    <div className="slider5"  >
+                        {slider3arr[9]}
+                    </div>
+                    <h5 style={{ background: "linear-gradient(to right, rgba(228, 43, 43, 0.1), rgba(228, 43, 43, 0))" }} >
+                        By release year (2016)
+                    </h5>
+                    <div className="slider5"  >
+                        {slider3arr[10]}
+                    </div>
+                    <h5 style={{ background: "linear-gradient(to right, rgba(228, 43, 43, 0.1), rgba(228, 43, 43, 0))" }} >
+                        By release year (2015)
+                    </h5>
+                    <div className="slider5"  >
+                        {slider3arr[11]}
                     </div>
                 </div>
             </div>
