@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import "./style.css"
 import Slider2 from './Slider2'
 import YouTube from "react-youtube"
@@ -6,42 +6,57 @@ import movieTrailer from "movie-trailer"
 
 let slider2arr = []
 let slider3arr = [[null]]
-let no = localStorage.getItem('count');
-const Api_key = "&api_key=4b8b44335fab1eaae7d2420f264758e0";
-const Base = "https://api.themoviedb.org/3";
-const baseImgAdd = "https://image.tmdb.org/t/p/w500";
-let imgPath;
-let backDropImage;
 
 localStorage.setItem("clickCheck", "no");
 
+let titleMain = localStorage.getItem('backDropTitle')
+let overview = localStorage.getItem('overview')
+let BGpath = localStorage.getItem('backDropPath');
+let length;
+
+const Api_key = "&api_key=4b8b44335fab1eaae7d2420f264758e0";
+const Base = "https://api.themoviedb.org/3";
+const baseImgAdd = "https://image.tmdb.org/t/p/w500";
+
 function getMovies(url, unique) {
     fetch(url).then(res => res.json()).then(data => {
+        let imgPath;
+        let backDropImage;
+        // no = localStorage.getItem('count')
+        length = data.results.length;
+        
         for (let i = 0; i < data.results.length; i++) {
             imgPath = baseImgAdd + data.results[i].poster_path;
             localStorage.setItem("path" + unique + i, imgPath);
             localStorage.setItem("movieTitle" + unique + i, data.results[i].title);
         }
+        
         if (unique == 5) {
-            if (no == data.results.length - 1 || no > data.results.length - 1) {
-                localStorage.setItem('count', 0)
-            }
-            backDropImage = "https://image.tmdb.org/t/p/original" + data.results[no].backdrop_path;
-            localStorage.setItem('backDropPath', backDropImage)
+            
+            let str = String(Math.random()* 19);
+
+            let no = parseInt(str[0]);
+
+            console.log( "this is " + no);
+
             var titleMovie = data.results[no].title;
-            localStorage.setItem('backDropTitle', titleMovie)
             var overView = data.results[no].overview;
+            backDropImage = "https://image.tmdb.org/t/p/original" + data.results[no].backdrop_path;
+
+            localStorage.setItem('backDropTitle', titleMovie)
             localStorage.setItem('overview', overView)
-            if (no < data.results.length - 1) {
-                localStorage.setItem('count', ++no)
-            }
+            localStorage.setItem('backDropPath', backDropImage)
+
+            // if (no == length - 1 || no > length - 1) {
+            //     localStorage.setItem('count', 0);
+            // }
+            // else if (no < (length - 1)) {
+            //     localStorage.setItem('count', ++no);
+            // }
         }
     })
 }
 
-let titleMain = localStorage.getItem('backDropTitle')
-let overview = localStorage.getItem('overview')
-let BGpath = localStorage.getItem('backDropPath');
 
 const opts = {
     height: "490",
@@ -58,35 +73,33 @@ for (let i = 0; i <= 10; i++) {
     slider3arr.push(slider2arr);
     slider2arr = [null];
 }
-let API_URL = Base + "/discover/movie?sort_by=popularity.desc" + Api_key;
-getMovies(API_URL, 0);
-API_URL = Base + "/discover/movie?primary_release_date.gte=2014-09-15&primary_release_date.lte=2014-10-22" + Api_key;
-getMovies(API_URL, 1);
-API_URL = Base + "/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc" + Api_key;
-getMovies(API_URL, 2);
-API_URL = Base + "/discover/movie?with_genres=18&primary_release_year=2019" + Api_key;
-getMovies(API_URL, 3);
-API_URL = Base + "/discover/movie?with_genres=35&with_cast=23659&sort_by=revenue.desc" + Api_key;
-getMovies(API_URL, 4);
-API_URL = Base + "/discover/movie?certification_country=US&certification.lte=G&sort_by=revenue.desc" + Api_key;
-getMovies(API_URL, 5);
-API_URL = Base + "/discover/movie?primary_release_date.gte=2020-01-01&primary_release_date.lte=2020-12-01" + Api_key;
-getMovies(API_URL, 6);
-API_URL = Base + "/discover/movie?with_genres=18&primary_release_year=2018" + Api_key;
-getMovies(API_URL, 7);
-API_URL = Base + "/discover/movie?with_genres=18&primary_release_year=2017" + Api_key;
-getMovies(API_URL, 8);
-API_URL = Base + "/discover/movie?with_genres=18&primary_release_year=2016" + Api_key;
-getMovies(API_URL, 9);
-API_URL = Base + "/discover/movie?with_genres=18&primary_release_year=2015" + Api_key;
-getMovies(API_URL, 10);
+
+let movieReqLink = ["/discover/movie?sort_by=popularity.desc",
+    "/discover/movie?primary_release_date.gte=2014-09-15&primary_release_date.lte=2014-10-22",
+    "/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc",
+    "/discover/movie?with_genres=18&primary_release_year=2019",
+    "/discover/movie?with_genres=35&with_cast=23659&sort_by=revenue.desc",
+    "/discover/movie?certification_country=US&certification.lte=G&sort_by=revenue.desc",
+    "/discover/movie?primary_release_date.gte=2020-01-01&primary_release_date.lte=2020-12-01",
+    "/discover/movie?with_genres=18&primary_release_year=2018",
+    "/discover/movie?with_genres=18&primary_release_year=2017",
+    "/discover/movie?with_genres=18&primary_release_year=2016",
+    "/discover/movie?with_genres=18&primary_release_year=2015"
+];
+
+let API_URL;
+
+for (var i = 0; i <= 10; i++) {
+    API_URL = Base + movieReqLink[i] + Api_key
+    getMovies(API_URL, i);
+}
 
 const Body = () => {
-
     let noneDP = "none"
     const [movieTrailerUrl, MTU] = useState(" ");
     const [bgColor, bgColorChange] = useState(" ");
     const [display1, newDisplay] = useState(noneDP);
+
 
     function triggerTrailer() {
         movieTrailer(titleMain).then((url) => {
@@ -99,12 +112,12 @@ const Body = () => {
         })
     }
 
-setInterval(() => {
-    if (localStorage.getItem("clickCheck") == "yes") {
-        newDisplay("block")
-        MTU(localStorage.getItem("currentMovieUrl"));
-    }
-}, 2000);
+    setInterval(() => {
+        if (localStorage.getItem("clickCheck") == "yes") {
+            newDisplay("block")
+            MTU(localStorage.getItem("currentMovieUrl"));
+        }
+    }, 2000);
 
     function cancel() {
         newDisplay("none");
@@ -114,14 +127,11 @@ setInterval(() => {
     }
 
     return (
-        <div className='mainBody' onScroll={(event)=>{
-            // console.log(event.scroll);
-            if( event.target.scrollTop > 400 ){
-                console.log("NetFlix Scrolled")
-                console.log(event.target.scrollTop)
-                bgColorChange('#111')
+        <div className='mainBody' onScroll={(event) => {
+            if (event.target.scrollTop > 300) {
+                bgColorChange('#111');
             }
-            else if(event.target.scrollTop < 400){
+            else if (event.target.scrollTop < 300) {
                 bgColorChange(" ");
             }
         }}>
@@ -130,7 +140,7 @@ setInterval(() => {
                     <div className="seriesDet"
                         style={{ backgroundImage: `url(${BGpath})` }}
                     >
-                        <h3 className="blurryHeader" style={{background:bgColor }} >
+                        <h3 className="blurryHeader" style={{ background: bgColor }} >
                             Netflix.
                         </h3>
                         <div className="flexDown">
